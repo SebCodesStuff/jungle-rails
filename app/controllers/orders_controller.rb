@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
 
   def show
-    @order = Order.find(params[:id])
+    # includes(line_items: [:product] is an example of eager loading, this changes
+    # our db call so that we load all our tables once and connect our searches to that
+    # rather than doing a three table query for each line item called n+1 problem
+    @order = Order.includes(line_items: [:product]).find(params[:id])
   end
 
   def create
