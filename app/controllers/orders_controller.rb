@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     # our db call so that we load all our tables once and connect our searches to that
     # rather than doing a three table query for each line item called n+1 problem
     @order = Order.includes(line_items: [:product]).find(params[:id])
+    sendEmail(@order)
   end
 
   def create
@@ -13,6 +14,7 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
@@ -23,6 +25,11 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def sendEmail (order)
+    # Use deliver_later for async delivery
+      UserMailer.receipt_email(order).deliver_now
+  end
 
   def empty_cart!
     # empty hash means no products in cart :)

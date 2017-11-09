@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> <%= @order.email %>, here are your purchases form jungle.com</h1>
+    <p>
+      You purchased the following:
+    <ul>
+      <% @order.line_items.each do |item| %>
+        <li> <%= item.quantity %>  <%= item.name %> : <%= item.item_price %> </li>
+      <% end %>
+        <li>Total: <%= humanized_money_with_symbol @order.total %> </li>
+    </ul>
+    </p>
+    <p>Thanks for your business and have a great day!</p>
+  </body>
+</html>
