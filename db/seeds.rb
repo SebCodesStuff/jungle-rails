@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'faker'
+
 puts "Seeding Data ..."
 
 # Helper functions
@@ -132,5 +134,16 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## REVIEWS
+
+puts "Creating Reviews"
+
+10.times do
+  Review.create!(
+    product_id: rand(12),
+    user_id: rand(2),
+    description: 'My custome description',
+    rating: rand(5))
+end
 
 puts "DONE!"
