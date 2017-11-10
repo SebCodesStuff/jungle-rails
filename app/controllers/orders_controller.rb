@@ -27,8 +27,7 @@ class OrdersController < ApplicationController
   private
 
   def sendEmail (order)
-    # Use deliver_later for async delivery
-      UserMailer.receipt_email(order).deliver_now
+    UserMailer.receipt_email(order).deliver_later
   end
 
   def empty_cart!
