@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+before_filter :authorize, :except => [:create, :delete]
 
   def create
     @product = Product.find(params[:product_id])

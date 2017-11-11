@@ -3,4 +3,9 @@
 <p> <%= review.created_at %> </p>
 <h4> Rating: <%= review.rating %></h4>
 
-<%= link_to 'Delete', [@product, review], method: :delete, id: 8%>
+<% if current_user === nil %>
+<% else %>
+  <% if current_user.id === review.user_id %>
+  <%= link_to 'Delete', [@product, review], method: :delete, id: 8%>
+  <% end %>
+<% end %>
