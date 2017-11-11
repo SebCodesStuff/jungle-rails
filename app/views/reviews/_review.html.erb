@@ -1,3 +1,6 @@
 <h3> <%= review.user.name %> </h3>
 <p>  <%= review.description %> </p>
+<p> <%= review.created_at %> </p>
 <h4> Rating: <%= review.rating %></h4>
+
+<%= link_to 'Delete', [@product, review], method: :delete, id: 8%>

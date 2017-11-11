@@ -28,13 +28,15 @@
   </article>
   <h3> Reviews </h3>
   <article class = 'reviews'>
-    <%= form_for [@product, Review.new] do |f| %>
-      <%= f.text_area :description %>
-      <%= f.select :rating, [1..5] %>
-      <%= f.submit "Submit" %>
+    <% if current_user %>
+      <%= form_for [@product, Review.new] do |f| %>
+        <%= f.text_area :description %>
+        <%= f.select :rating, [1,2,3,4,5] %>
+        <%= f.submit "Submit" %>
+      <% end %>
     <% end %>
-
-    <%= render @product.reviews  %>
+    <!-- Make it descending -->
+    <%= render @product.reviews.order(updated_at: :desc)  %>
 
   </article>
 
