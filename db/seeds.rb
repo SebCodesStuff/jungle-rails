@@ -134,15 +134,25 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## USERS
+
+  User.create!(
+    name: 'Seb',
+    email: 'seb@gmail.com',
+    password_digest: '123456')
+
+  User.create!(
+    name: 'Gil',
+    email: 'gil@gmail.com',
+    password_digest: '123456')
+
 ## REVIEWS
 
-puts "Creating Reviews"
-
-10.times do
+2.times do
   Review.create!(
-    product_id: rand(12),
-    user_id: rand(2),
-    description: 'My custome description',
+    product_id: 12,
+    user_id: rand(1..2),
+    description: Faker::Hipster.sentence ,
     rating: rand(5))
 end
 
