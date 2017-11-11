@@ -25,9 +25,15 @@
         </dl>
       </div>
     </div>
-
   </article>
+  <h3> Reviews </h3>
   <article class = 'reviews'>
+    <%= form_for [@product, Review.new] do |f| %>
+      <%= f.text_area :description %>
+      <%= f.select :rating, [1..5] %>
+      <%= f.submit "Submit" %>
+    <% end %>
+
     <%= render @product.reviews  %>
 
   </article>
