@@ -138,12 +138,12 @@ cat3.products.create!({
 
   User.create!(
     name: 'Seb',
-    email: 'seb@gmail.com',
+    email: 'SEB@GMAIL.COM',
     password_digest: '123456')
 
   User.create!(
     name: 'Gil',
-    email: 'gil@gmail.com',
+    email: 'GIL@GMAIL.COM',
     password_digest: '123456')
 
 ## REVIEWS
