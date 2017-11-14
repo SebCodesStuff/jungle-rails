@@ -52,6 +52,7 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'pry'
 end
 
 group :development do
