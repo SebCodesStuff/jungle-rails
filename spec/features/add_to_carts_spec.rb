@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor clicks on product image", type: :feature, js: true do
+RSpec.feature "Visitor clicks add to cart", type: :feature, js: true do
 
   #setup
   before :each do
@@ -17,12 +17,14 @@ RSpec.feature "Visitor clicks on product image", type: :feature, js: true do
     end
   end
 
-  scenario "They see product details" do
+  scenario "They see the number of items in cart increase" do
+    # ACT
     visit root_path
+    first(".product footer a").click
 
-    first(".product header a img").click
-    expect(page).to have_css 'article.product-detail'
+    # DEBUG / VERIFY
+    expect(page).to have_content 'My Cart (1)'
     save_screenshot
-
   end
+
 end
